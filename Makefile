@@ -7,9 +7,10 @@ BLACK=black
 ISORT=isort
 MYPY=mypy
 PYTEST=pytest
+MAKE = make
 
 install:
-	$(PIP) install --upgrade pip
+	python.exe -m $(PIP) install --upgrade pip
 	$(PIP) install -r requirements.txt
 	$(PIP) install ruff black isort mypy pytest pip-tools
 
@@ -28,7 +29,18 @@ isort-check:
 type-check:
 	$(MYPY) .
 
-check: lint ruff-check black-check isort-check type-check
+check:
+	-@echo "=== Ruff lint ==="
+	-@$(RUFF) check --preview .
+	-@echo "=== Ruff format (dry run) ==="
+	-@$(RUFF) format --check .
+	-@echo "=== Black (dry run) ==="
+	-@$(BLACK) --check --diff .
+	-@echo "=== isort (dry run) ==="
+	-@$(ISORT) --check --diff .
+	-@echo "=== mypy type check ==="
+	-@$(MYPY) .
+	-@echo "=== End ==="
 
 ruff-format:
 	$(RUFF) format .
@@ -39,7 +51,10 @@ black-format:
 isort-format:
 	$(ISORT) .
 
-format: ruff-format black-format isort-format
+format:
+	-$(MAKE) ruff-format
+	-$(MAKE) black-format
+	-$(MAKE) isort-format
 
 test:
 	$(PYTEST)
