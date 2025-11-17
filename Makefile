@@ -10,7 +10,8 @@ PYTEST=pytest
 MAKE = make
 
 install:
-	python.exe -m $(PIP) install --upgrade pip
+	# pip 25.3 does not work with pip-compile
+	python.exe -m $(PIP) install pip==25.2
 	$(PIP) install -r requirements.txt
 	$(PIP) install ruff black isort mypy pytest pip-tools
 
