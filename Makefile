@@ -14,6 +14,7 @@ install:
 	python.exe -m $(PIP) install pip==25.2
 	$(PIP) install -r requirements.txt
 	$(PIP) install ruff black isort mypy pytest pip-tools
+	$(MYPY) --install-types
 
 lint:
 	$(RUFF) check --preview .
