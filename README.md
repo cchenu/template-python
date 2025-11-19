@@ -33,6 +33,8 @@ xxx
    pip install -r requirements.txt
    ```
 
+### Run the application
+xxx
 
 ## Project Status
 Project is: _complete_ - version 0.0.1.
