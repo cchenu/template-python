@@ -33,11 +33,12 @@ select = [
 
 ignore = [
   "PLR0904", # too-many-public-methods
-  "PLR0913", # Too many arguments to function call
   "PLR0911", # Too many returns
   "PLR0912", # Too many branches
+  "PLR0913", # Too many arguments to function call
   "PLR0914", # Too many locals
   "PLR0915", # Too many statements
+  "PLR0917", # too-many-positional-arguments
   "D203", # incorrect-blank-line-before-class
   "D212", # multi-line-summary-first-line 
   "COM812", # missing-trailing-coma
