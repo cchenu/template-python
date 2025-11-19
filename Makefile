@@ -20,7 +20,7 @@ lint:
 	$(RUFF) check --preview .
 
 ruff-check:
-	$(RUFF) format --check .
+	$(RUFF) format --check --diff .
 
 black-check:
 	$(BLACK) --check --diff .
@@ -35,7 +35,7 @@ check:
 	-@echo "=== Ruff lint ==="
 	-@$(RUFF) check --preview .
 	-@echo "=== Ruff format (dry run) ==="
-	-@$(RUFF) format --check .
+	-@$(RUFF) format --check --diff .
 	-@echo "=== Black (dry run) ==="
 	-@$(BLACK) --check --diff .
 	-@echo "=== isort (dry run) ==="
